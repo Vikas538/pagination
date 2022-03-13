@@ -124,7 +124,6 @@ class Db {
 
         if (this.query instanceof Error) return log.error(this.query);
       }
-    
       try {
         rows = await this.query(query);
         this.close_db_client();

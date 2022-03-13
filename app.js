@@ -27,7 +27,12 @@ app.post("/", async (req, res) => {
   pageNumber = Number(pageNumber);
   const paginationOffset = (pageNumber - 1) * paginationLimit;
 
-  const totalMoviesCountQuery = "SELECT COUNT (*) as count FROM movies";
+  let totalMoviesCountQuery = "SELECT COUNT (*) as count FROM movies";
+
+  if(year)
+  {
+    totalMoviesCountQuery+= ` where Year > ${year}`
+  }
 
   const totalMoviesCountResult = await db.get_movies(totalMoviesCountQuery);
   console.log(totalMoviesCountResult[0]);
