@@ -124,15 +124,13 @@ class Db {
 
         if (this.query instanceof Error) return log.error(this.query);
       }
-      // log.info("query string----->", str);
-      // let query = "SELECT * FROM movies";
+    
       try {
         rows = await this.query(query);
         this.close_db_client();
       } catch (err) {
         console.log(err);
       }
-
       return rows;
     }
   }
